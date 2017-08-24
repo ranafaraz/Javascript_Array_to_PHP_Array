@@ -1,0 +1,99 @@
+<html>
+<head>
+   
+</head>
+<body>
+    <form action = "myPhpPage.php" method='post' name='myform' onSubmit='send_value()'>
+		<input name='one' type='hidden' value=''>
+		<input name='two' type='hidden' value=''>
+		<input name='three' type='hidden' value=''>
+		<input name='four' type='hidden' value=''>
+		
+		    <b> Name:</b>
+			<input type="text" id="name"><br><br>
+		
+		    <b> F_Name: </b> 
+			<input type="text" id="fname">
+			<br><br>
+			
+			<td><b>Roll#: </b></td>
+			<td><input type="text" id="rollno" ></td><br><br>
+			
+			<td><b>Phone#: </b></td>
+			<td><input type="text" id="pno" ></td>
+			
+		<input type='submit' value='convert JavaScript array to PHP array'>
+		<input type="hidden"  id="submit" >
+    </form>
+	    <button  onclick="insert()" > display </button>
+		
+    
+			
+            <p id="demo" ></p>
+			<p id="demo1" ></p>
+			<p id="demo2" ></p>
+			<p id="demo3" ></p>
+			
+		<div id="mydata"  style="margin-left : 100px;">
+        <table  border="1"  id="myTableData" cellpadding="2" >
+		
+		    <tr>
+			    <th> Name         </th>
+				<th> F_Name       </th>
+				<th> Roll#       </th>
+				<th> Phone#       </th>
+				
+			</tr>
+		</table>
+		<br/>
+</div>
+	<script>
+	
+        let nameArr = new Array();
+		let fnameArr = new Array();
+		let rollNOArr = new Array();
+		let pNoArr = new Array();
+		
+			function insert()
+			{
+				let name, fname, rollNo, phoneNo;
+				
+				name = document.getElementById("name").value;
+				fname = document.getElementById("fname").value;
+				rollNo = document.getElementById("rollno").value;
+				phoneNo = document.getElementById("pno").value;
+				
+			    nameArr.push(name);
+				fnameArr.push(fname);
+				rollNOArr.push(rollNo);
+				pNoArr.push(phoneNo); 
+				/*
+				document.getElementById("demo").innerHTML = nameArr;
+				document.getElementById("demo1").innerHTML = fnameArr;
+				document.getElementById("demo2").innerHTML = rollNOArr;
+				document.getElementById("demo3").innerHTML = pNoArr;*/
+				
+				table = document.getElementById("myTableData");
+				
+				let rowCount = table.rows.length;
+				let row = table.insertRow(rowCount);
+				
+				row.insertCell(0).innerHTML= name;
+				row.insertCell(1).innerHTML= fname;
+				row.insertCell(2).innerHTML= rollNo;
+				row.insertCell(3).innerHTML= phoneNo;	 
+			 } 
+			function send_value()
+			{
+					 document.myform.one.value = nameArr.toString();
+					 document.myform.two.value = fnameArr.toString();
+					 document.myform.three.value = fnameArr.toString();
+					 document.myform.four.value = fnameArr.toString();
+			}
+
+	</script>
+
+
+   
+</body>
+</html>
