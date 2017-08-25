@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title> JavaScript page </title>  
+</head>
+<body>
+        
+        <form action = "myPhpPage.php" method='post' name='myform' onSubmit='send_value()'>
+		
+		
+			<input name='one' type='hidden' value=''>
+			<input name='two' type='hidden' value=''>
+			<input name='three' type='hidden' value=''>
+			<input name='four' type='hidden' value=''>
+		    
+			<!-- form fields that contains a specific id -->
+		    
+			<b> Name:</b>
+			<input type="text" id="name"><br><br>
+		
+		    <b> F_Name: </b> 
+			<input type="text" id="fname">
+			<br><br>
+			
+			<td><b>Roll#: </b></td>
+			<td><input type="text" id="rollno" ></td><br><br>
+			
+			<td><b>Phone#: </b></td>
+			<td><input type="text" id="pno" ></td><br><br>
+			
+			<!-- this button convert the javascript array into php and also send all the array data in database -->
+			<input type='submit' value='send to database'>
+			
+			
+			
+    </form>
+	        <!--this button contain onclick function and the onclick function store all inputs in array -->
+			<br><button  onclick="insert()" > display </button>
+		
+            <!-- these id's are use to print data -->
+            <p id="demo" ></p>
+			<p id="demo1" ></p>
+			<p id="demo2" ></p>
+			<p id="demo3" ></p>
+			
+			<!-- table start tha print the headings and the remaining part of table are defined in the end of this page -->
+	<div id="mydata"  style="margin-left : 100px;">
+	    <table  border="1"  id="myTableData" cellpadding="2" >
+		    <tr>
+			    <th> Name         </th>
+				<th> F_Name       </th>
+				<th> Roll#        </th>
+				<th> Phone#       </th>
+			</tr>
+		</table>
+		<br/>
+    </div>
+	<!-- javascript start -->
+	<script>
+	        //Arrays are declare
+			let nameArr = new Array();
+			let fnameArr = new Array();
+			let rollNOArr = new Array();
+			let pNoArr = new Array();
+		    
+			//this insert function work behind the onclick event
+			function insert()
+			{
+				let name, fname, rollNo, phoneNo;
+				
+				//get the value from the "form" through specific id that are define in form fields then store in variable
+				name = document.getElementById("name").value;
+				fname = document.getElementById("fname").value;
+				rollNo = document.getElementById("rollno").value;
+				phoneNo = document.getElementById("pno").value;
+				
+				// push is the method of array in javascript ,..and this method push the new value in array 
+			    nameArr.push(name);
+				fnameArr.push(fname);
+				rollNOArr.push(rollNo);
+				pNoArr.push(phoneNo); 
+				
+				//this code use to print the array ..but now we dnt need to print these arrays so commenting these lines
+				/*
+				document.getElementById("demo").innerHTML = nameArr;
+				document.getElementById("demo1").innerHTML = fnameArr;
+				document.getElementById("demo2").innerHTML = rollNOArr;
+				document.getElementById("demo3").innerHTML = pNoArr;*/
+				
+				//table that are define in front of the page are store in "table" variable through id "myTableData"
+				table = document.getElementById("myTableData");
+				
+				//count the table row
+				let rowCount = table.rows.length;
+				
+				//insert the new row
+				let row = table.insertRow(rowCount);
+				
+				//insert the coulmn against the row
+				row.insertCell(0).innerHTML= name;
+				row.insertCell(1).innerHTML= fname;
+				row.insertCell(2).innerHTML= rollNo;
+				row.insertCell(3).innerHTML= phoneNo;	 
+			    
+				
+			 } 
+			    //this function convert the javascript array in string
+				function send_value()
+				{
+						 document.myform.one.value = nameArr.toString();
+						 document.myform.two.value = fnameArr.toString();
+						 document.myform.three.value = fnameArr.toString();
+						 document.myform.four.value = fnameArr.toString();
+				}
+	</script>
+
+
+   
+</body>
+</html>
